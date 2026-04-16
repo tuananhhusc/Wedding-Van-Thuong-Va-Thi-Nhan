@@ -24,3 +24,11 @@ export async function GET(
     },
   });
 }
+
+export async function generateStaticParams() {
+  return [
+    { event: "church" },
+    { event: "le-vu-quy" },
+    { event: "le-thanh-hon" },
+  ];
+}
