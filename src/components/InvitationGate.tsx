@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { withBase } from "@/lib/basepath";
 
 type InvitationGateProps = {
   visible: boolean;
@@ -43,7 +44,7 @@ export default function InvitationGate({ visible, onOpen }: InvitationGateProps)
   };
 
   const reduced = Boolean(prefersReducedMotion);
-  const envelopeImage = isMobile ? "/image/lathumobile.svg" : "/image/lathuweb.svg";
+  const envelopeImage = isMobile ? withBase("/image/lathumobile.svg") : withBase("/image/lathuweb.svg");
 
   const frameClass = isMobile
     ? "w-[360px] h-[640px] max-w-[92vw] max-h-[88vh]"

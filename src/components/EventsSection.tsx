@@ -8,6 +8,7 @@ import {
   SacredUnityCross,
   OliveBranch,
 } from "@/components/CatholicOrnaments";
+import { withBase } from "@/lib/basepath";
 
 /* ── Inline SVG Icons for buttons ── */
 
@@ -55,7 +56,7 @@ const events: EventCard[] = [
     id: "le-vu-quy",
     title: "Lễ Vu Quy",
     subtitle: "Tư Gia Nhà Gái",
-    imageUrl: "/image/karina.png",
+    imageUrl: withBase("/image/karina.png"),
     datetime: "09:30 — Thứ Năm, 30/04/2026",
     venue: "Tư Gia Nhà Gái",
     address: "Xóm Ban Long, xã Xuân Lộc, tỉnh Hà Tĩnh",
@@ -67,7 +68,7 @@ const events: EventCard[] = [
     id: "le-thanh-hon",
     title: "Lễ Thành Hôn",
     subtitle: "Tư Gia Nhà Trai",
-    imageUrl: "/image/parkseojoon.png",
+    imageUrl: withBase("/image/parkseojoon.png"),
     datetime: "09:30 — Thứ Bảy, 02/05/2026",
     venue: "Tư Gia Nhà Trai",
     address: "Tổ dân phố 17, phường Hà Huy Tập, tỉnh Hà Tĩnh",

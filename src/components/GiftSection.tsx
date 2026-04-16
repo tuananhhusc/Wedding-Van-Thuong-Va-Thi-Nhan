@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { SacredUnityCross } from "@/components/CatholicOrnaments";
 import type { BankAccount } from "@/lib/types";
 import { fadeUpVariants, getEnterDistance, motionTokens, staggerContainer } from "@/lib/motion";
+import { withBase } from "@/lib/basepath";
 
 function CopyIcon() {
   return (
@@ -48,7 +49,7 @@ const fallbackAccounts: BankAccount[] = [
     account_holder: "PHAM THI NHAN",
     account_number: "8840769381",
     bank_name: "BIDV",
-    qr_code_url: "/image/nganhangcodau.jpg",
+    qr_code_url: withBase("/image/nganhangcodau.jpg"),
   },
   {
     id: 2,

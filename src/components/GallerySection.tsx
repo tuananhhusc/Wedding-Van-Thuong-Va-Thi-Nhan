@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { fadeUpVariants, getEnterDistance, motionTokens, staggerContainer } from "@/lib/motion";
 import { SacredUnityCross } from "@/components/CatholicOrnaments";
+import { withBase } from "@/lib/basepath";
 
 export default function GallerySection() {
   /*
@@ -16,15 +17,15 @@ export default function GallerySection() {
     alt: string;
     layout: "large" | "tall" | "wide" | "normal";
   }[] = [
-    { id: 1, url: "/image/blackpink_1.png", alt: "Blackpink Group Portrait", layout: "large" },
-    { id: 2, url: "/image/blackpink_2.png", alt: "Jennie Kim", layout: "tall" },
-    { id: 3, url: "/image/aespa_duo.png", alt: "Karina & Winter (aespa)", layout: "normal" },
-    { id: 4, url: "/image/blackpink_4.png", alt: "Rosé Park", layout: "tall" },
-    { id: 5, url: "/image/blackpink_5.png", alt: "Blackpink Performance", layout: "wide" },
-    { id: 6, url: "/image/blackpink_6.png", alt: "Jisoo Kim", layout: "normal" },
-    { id: 7, url: "/image/aespa_karina.png", alt: "Karina (aespa)", layout: "large" },
-    { id: 8, url: "/image/aespa_winter.png", alt: "Winter (aespa)", layout: "wide" },
-    { id: 9, url: "/image/suzy.png", alt: "Vĩnh Cửu — Con số 9 May Mắn (Suzy)", layout: "normal" },
+    { id: 1, url: withBase("/image/blackpink_1.png"), alt: "Blackpink Group Portrait", layout: "large" },
+    { id: 2, url: withBase("/image/blackpink_2.png"), alt: "Jennie Kim", layout: "tall" },
+    { id: 3, url: withBase("/image/aespa_duo.png"), alt: "Karina & Winter (aespa)", layout: "normal" },
+    { id: 4, url: withBase("/image/blackpink_4.png"), alt: "Rosé Park", layout: "tall" },
+    { id: 5, url: withBase("/image/blackpink_5.png"), alt: "Blackpink Performance", layout: "wide" },
+    { id: 6, url: withBase("/image/blackpink_6.png"), alt: "Jisoo Kim", layout: "normal" },
+    { id: 7, url: withBase("/image/aespa_karina.png"), alt: "Karina (aespa)", layout: "large" },
+    { id: 8, url: withBase("/image/aespa_winter.png"), alt: "Winter (aespa)", layout: "wide" },
+    { id: 9, url: withBase("/image/suzy.png"), alt: "Vĩnh Cửu — Con số 9 May Mắn (Suzy)", layout: "normal" },
   ];
 
   const layoutClassMap = {
