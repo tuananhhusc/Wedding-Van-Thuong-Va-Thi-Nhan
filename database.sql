@@ -58,6 +58,6 @@ USING (true);
 INSERT INTO public.bank_accounts (role, account_holder, account_number, bank_name, qr_code_url)
 VALUES 
 ('bride', 'PHAM THI NHAN', '8840769381', 'BIDV', '/image/nganhangcodau.jpg'),
-('groom', 'TRẦN VĂN [TÊN CHÚ RỂ]', '000000000', 'Không có', NULL);
+('groom', 'NGUYỄN VĂN THƯỜNG', '000000000', 'Không có', NULL);
 
 -- Mẹo: Để tạo ảnh QR Code (qr_code_url), bạn có thể dùng vietqr.io hoặc up ảnh xịn của bạn vào Storage của Supabase rồi lấy Link chép vào chữ NULL bên trên (có dấu nháy đơn, ví dụ: 'https://link-anh/qr.jpg').

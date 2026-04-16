@@ -243,6 +243,15 @@ export default function AdminDashboard() {
                             <div className="w-8 h-8 border-2 border-gold/20 border-t-gold rounded-full animate-spin"></div>
                             <p className="font-serif italic text-charcoal-light uppercase text-[10px] tracking-widest">Đang tải biểu mẫu...</p>
                           </div>
+                        ) : error ? (
+                          <div className="opacity-80 flex flex-col items-center text-[#8a1827]">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mb-4">
+                                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                            <p className="font-serif text-xl italic mb-2">Lỗi kết nối dữ liệu</p>
+                            <p className="font-sans text-xs uppercase tracking-widest opacity-70">Sự cố: {error}</p>
+                            <p className="text-sm mt-4 text-charcoal max-w-xs">Vui lòng kiểm tra lại Secret `NEXT_PUBLIC_SUPABASE_URL` và `KEY` trên GitHub.</p>
+                          </div>
                         ) : (
                           <div className="opacity-60 flex flex-col items-center">
                             <div className="w-16 h-16 rounded-full bg-gold-pale flex items-center justify-center mb-4">
