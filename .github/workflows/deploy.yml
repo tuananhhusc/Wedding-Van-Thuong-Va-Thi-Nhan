@@ -56,11 +56,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (next/image) to better support pages.
-          #
-          # You can leverage this after you create a Next.js project with `npx create-next-app@latest`
-          # and the project is using the Pages Router.
+          generator_config_file: next.config.ts
           static_site_generator: next
       - name: Restore cache
         uses: actions/cache@v4
