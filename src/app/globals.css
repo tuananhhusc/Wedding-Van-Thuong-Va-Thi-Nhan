@@ -1,26 +1,742 @@
 @import "tailwindcss";
 
+/* ===================================
+   CATHOLIC WEDDING — Design Tokens
+   =================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Background Colors (Warmer tone for Vietnamese wedding) */
+  --color-cream: #fffaf7;
+  --color-cream-warm: #faece6;
+  --color-beige: #ebdcd5;
+  --color-beige-light: #f5e8e3;
+
+  /* Text Colors (Navy replaced by Deep Burgundy/Đỏ tía) */
+  --color-navy: #8a1827;
+  --color-navy-light: #6e151e;
+  --color-charcoal: #403b3b;
+  --color-charcoal-light: #8a8282;
+
+  /* Accent Colors (More vibrant Gold/Vàng đồng) */
+  --color-gold: #dfb12c;
+  --color-gold-warm: #c4961b;
+  --color-gold-light: #f5d36e;
+  --color-gold-muted: #c4a964;
+  --color-gold-pale: #fdf6df;
+
+  /* Nature Accents */
+  --color-sage: #8f9779;
+  --color-sage-light: #abb296;
+  --color-sage-pale: #d2d6c3;
+
+  /* Utility Colors */
+  --color-border: #e6cec1;
+  --color-border-light: #f5e4db;
+  --color-shadow: rgba(110, 21, 30, 0.08);
 }
 
+/* Tailwind v4 custom theme tokens */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-cream: var(--color-cream);
+  --color-cream-warm: var(--color-cream-warm);
+  --color-beige: var(--color-beige);
+  --color-beige-light: var(--color-beige-light);
+
+  --color-navy: var(--color-navy);
+  --color-navy-light: var(--color-navy-light);
+  --color-charcoal: var(--color-charcoal);
+  --color-charcoal-light: var(--color-charcoal-light);
+
+  --color-gold: var(--color-gold);
+  --color-gold-warm: var(--color-gold-warm);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-muted: var(--color-gold-muted);
+  --color-gold-pale: var(--color-gold-pale);
+
+  --color-sage: var(--color-sage);
+  --color-sage-light: var(--color-sage-light);
+  --color-sage-pale: var(--color-sage-pale);
+
+  --color-border: var(--color-border);
+  --color-border-light: var(--color-border-light);
+
+  /* Font families */
+  --font-serif: var(--next-font-serif), "Georgia", "Times New Roman", serif;
+  --font-sans: var(--next-font-sans), "Arial", sans-serif;
+  --font-script: var(--next-font-script), cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ===================================
+   BASE STYLES
+   =================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  background-attachment: fixed;
+  color: var(--color-navy);
+  font-family: var(--font-serif);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  margin: 0;
+  padding: 0;
+  /* Tránh hiện tượng giật khi load ảnh nền */
+  transition: background-color 0.3s ease;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--color-gold-pale);
+  color: var(--color-navy);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* ===================================
+   TYPOGRAPHY BASE
+   =================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-navy);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+p {
+  color: var(--color-charcoal);
+  line-height: 1.8;
+}
+
+a {
+  color: var(--color-navy);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-navy-light);
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+/* Gold decorative line */
+.divider-gold {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-gold);
+  margin: 1.5rem auto;
+}
+
+/* Cross ornament */
+.ornament-cross::before {
+  content: "✝";
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-gold-muted);
+  letter-spacing: 0.5em;
+  margin-bottom: 0.5rem;
+}
+
+/* Section spacing */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 7rem 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .section-padding {
+    padding: 3.75rem 1rem;
+  }
+}
+
+/* Ultra-small devices: iPhone SE / older Android (320-360px) */
+@media (max-width: 360px) {
+  .section-padding {
+    padding: 3rem 0.75rem;
+  }
+
+  .mobile-brand {
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-couple-names {
+    font-size: 1.7rem;
+    line-height: 1.2;
+    gap: 0.35rem;
+  }
+
+  .divider-gold {
+    width: 42px;
+    margin: 1rem auto;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    min-height: 44px;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+
+  .gallery-grid {
+    grid-auto-rows: 130px;
+    gap: 0.4rem;
+  }
+
+  .rsvp-card {
+    padding: 1.2rem 0.85rem;
+  }
+
+  .event-card,
+  .gift-card {
+    padding: 1rem 0.85rem;
+  }
+}
+
+/* ===================================
+   FORM STYLES
+   =================================== */
+
+input,
+textarea,
+select {
+  font-family: var(--font-serif);
+  border: 1px solid var(--color-border);
+  background-color: white;
+  color: var(--color-navy);
+  border-radius: 2px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px var(--color-gold-pale);
+}
+
+/* ===================================
+   BUTTON STYLES
+   =================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.5rem;
+  min-height: 48px; /* Touch-friendly */
+  background-color: #8a1827;
+  color: white;
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #6e151e;
+  box-shadow: 0 6px 24px rgba(138, 24, 39, 0.3);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  min-height: 48px; /* Touch-friendly */
+  background-color: transparent;
+  color: #8a1827;
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid #8a1827;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: #8a1827;
+  color: white;
+  box-shadow: 0 6px 24px rgba(138, 24, 39, 0.25);
+}
+
+.btn-sm {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  min-height: 44px; /* Touch-friendly */
+}
+
+@media (max-width: 767px) {
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    min-height: 46px;
+    padding-inline: 1rem;
+  }
+}
+
+/* Utility: Background with subtle patterns */
+.section-bg-nenphu {
+  background-color: #fffaf7; /* Đảm bảo màu kem luôn hiện trước */
+  background-image: url("/image/nenphu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-bg-nenphu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(253, 251, 247, 0.25); /* Very light overlay to let nenphu.svg show */
+  z-index: 0;
+}
+
+.section-bg-nenphu > * {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hero Section Background */
+.section-bg-hero {
+  background-color: #fffaf7;
+  background-image: url("/image/nenchinhthuc3.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: scroll;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Use dedicated mobile background art for selected sections */
+@media (max-width: 767px) {
+  .section-bg-nenmobile {
+    background-color: #fffaf7;
+    background-image: url("/image/nenmobile.svg");
+    background-repeat: repeat-y;
+    background-position: center top;
+    background-size: 100% auto;
+  }
+
+  .section-bg-hero {
+    background-image: url("/image/nenchinhthuc4.svg");
+    background-position: center top;
+    background-size: cover;
+  }
+}
+
+
+
+.bg-glass-ivory {
+  background-color: rgba(253, 251, 247, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ===================================
+   EVENT CARDS
+   =================================== */
+
+.event-card {
+  background-color: transparent;
+  border: 1px solid rgba(230, 206, 193, 0.4);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.event-card:hover {
+  background-color: transparent;
+  box-shadow: 0 8px 32px var(--color-shadow);
+  transform: translateY(-2px);
+}
+
+.event-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 1rem auto;
+  border: 1px solid var(--color-gold-muted);
+  border-radius: 50%;
+}
+
+.event-card-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-gold);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ===================================
+   GALLERY MASONRY
+   =================================== */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 200px;
+  gap: 0.625rem;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery-grid {
+    grid-auto-rows: 150px;
+    gap: 0.5rem;
+  }
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  background: rgba(245, 232, 227, 0.5);
+  border: 1px solid rgba(230, 206, 193, 0.3);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 60%,
+    rgba(110, 21, 30, 0.15) 100%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* Span classes */
+.gallery-tall {
+  grid-row: span 2;
+}
+
+.gallery-wide {
+  grid-column: span 2;
+}
+
+.gallery-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* ===================================
+   RSVP CARD
+   =================================== */
+
+.rsvp-card {
+  background: transparent;
+  border: 1px solid rgba(196, 169, 100, 0.3);
+  box-shadow:
+    0 1px 3px rgba(184, 147, 31, 0.06),
+    0 8px 32px rgba(184, 147, 31, 0.04);
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .rsvp-card {
+    padding: 3.5rem 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .rsvp-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Decorative corner accents */
+.rsvp-card::before,
+.rsvp-card::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-color: var(--color-gold-muted);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.5;
+}
+
+.rsvp-card::before {
+  top: 12px;
+  left: 12px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.rsvp-card::after {
+  bottom: 12px;
+  right: 12px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+/* Custom radio buttons */
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  flex: 1;
+}
+
+.radio-option:hover {
+  border-color: var(--color-gold-muted);
+  background-color: var(--color-gold-pale);
+}
+
+.radio-option.active {
+  border-color: var(--color-gold);
+  background-color: var(--color-gold-pale);
+}
+
+.radio-dot {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.radio-option.active .radio-dot {
+  border-color: #8a1827;
+}
+
+.radio-dot-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #8a1827;
+  transform: scale(0);
+  transition: transform 0.15s ease;
+}
+
+.radio-option.active .radio-dot-inner {
+  transform: scale(1);
+}
+
+/* Thank-you animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.5s ease forwards;
+}
+
+/* ===================================
+   GIFT CARDS
+   =================================== */
+
+.gift-card {
+  background-color: transparent;
+  border: 1px solid rgba(196, 169, 100, 0.3);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.gift-card:hover {
+  background-color: transparent;
+  box-shadow:
+    0 4px 12px rgba(184, 147, 31, 0.08),
+    0 12px 40px rgba(184, 147, 31, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Top decorative stripe */
+.gift-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-gold-muted) 20%,
+    var(--color-gold) 50%,
+    var(--color-gold-muted) 80%,
+    transparent 100%
+  );
+}
+
+.gift-card-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.gift-card-label::before,
+.gift-card-label::after {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background-color: var(--color-gold-muted);
+}
+
+/* Copy button feedback */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--color-gold-pale);
+  color: var(--color-navy);
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-gold-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background-color: var(--color-gold);
+  color: white;
+  border-color: var(--color-gold);
+}
+
+.copy-btn.copied {
+  background-color: var(--color-gold);
+  color: white;
+  border-color: var(--color-gold);
+}
+
+/* Respect user preference: reduce intense motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
